@@ -1,0 +1,19 @@
+[general]
+email = ""
+
+[server]
+headless = true
+enableCORS = false
+port = 8501
+maxUploadSize = 500
+
+[browser]
+gatherUsageStats = false
+serverAddress = "0.0.0.0"
+
+[theme]
+primaryColor = "#667eea"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#f8f9fa"
+textColor = "#2c3e50"
+font = "sans serif"

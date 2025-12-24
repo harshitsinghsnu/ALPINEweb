@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  alpine-web:
+    build: .
+    container_name: alpine-predictor
+    ports:
+      - "8501:8501"
+    volumes:
+      # Mount directory for model checkpoints
+      - ./models:/app/models
+      # Mount directory for results
+      - ./results:/app/results
+    environment:
+      - STREAMLIT_SERVER_HEADLESS=true
+      - STREAMLIT_SERVER_FILE_WATCHER_TYPE=none
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          # Adjust based on your GPU availability
+          cpus: '4'
+          memory: 8G
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
